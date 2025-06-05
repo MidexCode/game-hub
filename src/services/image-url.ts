@@ -1,7 +1,6 @@
 const getCroppedImageUrl = (url: string) => {
-  const target = "media/";
-  const index = url.indexOf(target) + target.length;
-  return url.slice(0, index) + "crop/600/400" + url.slice(index);
+  // Return placeholder if no image is available
+  return url || "https://via.placeholder.com/600x400?text=No+Image";
 };
 
 export default getCroppedImageUrl;
