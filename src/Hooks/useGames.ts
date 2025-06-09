@@ -21,7 +21,7 @@ interface FetchGameResponse {
   results: Game[];
 }
 
-const useGames = () => {
+export const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,4 +48,4 @@ const useGames = () => {
   return { games, error, isLoading };
 };
 
-export default useGames;
+// export default useGames;
