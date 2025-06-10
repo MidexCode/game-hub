@@ -12,7 +12,7 @@ const GameGrid = () => {
 
   return (
     <SimpleGrid
-      columns={{ base: 1, sm: 2, md: 2, lg: 2, xl: 3 }}
+      columns={{ base: 1, sm: 2, md: 2, lg: 2, xl: 4 }}
       padding={5}
       gap={3}
     >
