@@ -1,6 +1,6 @@
 import useGenres, { type Genre } from "@/Hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
-import { HStack, Image, Link, List, Spinner } from "@chakra-ui/react";
+import { Heading, HStack, Image, Link, List, Spinner } from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
@@ -15,28 +15,35 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   if (isLoading) return <Spinner />;
 
   return (
-    <List.Root>
-      {data.map((genre) => (
-        <List.Item key={genre.id} paddingY={"10px"}>
-          <HStack>
-            <Image
-              boxSize={"32px"}
-              borderRadius={8}
-              src={getCroppedImageUrl(genre.image_background)}
-            />
-            <Link
-              fontSize={"lg"}
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              _hover={{ textDecoration: "underline" }}
-              cursor="pointer"
-              onClick={() => onSelectGenre(genre)}
-            >
-              {genre.name}
-            </Link>
-          </HStack>
-        </List.Item>
-      ))}
-    </List.Root>
+    <>
+      <Heading fontSize={"2xl"} m={3}>
+        Genres
+      </Heading>
+      <List.Root>
+        {data.map((genre) => (
+          <List.Item key={genre.id} paddingY={"10px"}>
+            <HStack>
+              <Image
+                boxSize={"32px"}
+                borderRadius={8}
+                objectFit={"cover"}
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Link
+                whiteSpace={"normal"}
+                fontSize={"lg"}
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                _hover={{ textDecoration: "underline" }}
+                cursor="pointer"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Link>
+            </HStack>
+          </List.Item>
+        ))}
+      </List.Root>
+    </>
   );
 };
 
