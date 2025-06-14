@@ -16,7 +16,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm" m={5}>
+        <Button variant="outline" size="sm">
           {selectedPlatform?.name || "Platforms"} <BsChevronDown />
         </Button>
       </Menu.Trigger>
@@ -24,6 +24,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         <Menu.Content>
           {data.map((platform) => (
             <Menu.Item
+              value={platform.id.toString()}
               onClick={() => onSelectPlatform(platform)}
               key={platform.id}
             >
